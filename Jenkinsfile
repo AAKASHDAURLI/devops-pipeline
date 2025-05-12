@@ -31,3 +31,14 @@ pipeline {
                     bat 'terraform init'
                 }
             }
+        }
+
+        stage('Terraform Apply') {
+            steps {
+                dir('terraform') {
+                    bat 'terraform apply -auto-approve'
+                }
+            }
+        }
+    }
+}
