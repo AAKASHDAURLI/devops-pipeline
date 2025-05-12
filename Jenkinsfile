@@ -4,14 +4,14 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
-                 git branch: 'main', url: 'https://github.com/AAKASHDAURLI/devops-pipeline.git'
+                git branch: 'main', url: 'https://github.com/AAKASHDAURLI/devops-pipeline.git'
             }
         }
 
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build("my-html-app")
+                    def dockerImage = docker.build("my-html-app")
                 }
             }
         }
