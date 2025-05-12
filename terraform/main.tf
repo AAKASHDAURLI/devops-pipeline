@@ -1,14 +1,14 @@
 terraform {
   required_providers {
     docker = {
-      source  = "hashicorp/docker"
-      version = ">= 2.0.0"  # Specify the version you want to use, adjust as needed
+      source  = "kreuzwerker/docker"
+      version = ">= 2.0.0"  # You can keep the version you need
     }
   }
 }
 
 provider "docker" {
-  host = "unix:///var/run/docker.sock"  # Replace with the appropriate Docker host URL
+  host = "unix:///var/run/docker.sock"  # or appropriate Docker host URL
 }
 
 resource "docker_image" "nginx_image" {
