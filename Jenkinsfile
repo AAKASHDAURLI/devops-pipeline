@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script {
                     bat 'docker rm -f html-container || true'
-                    bat 'docker run -d -p 8080:80 --name html-container my-html-app'
+                    bat 'docker run -d -p 9090:80 --name html-container my-html-app'
                 }
             }
         }
