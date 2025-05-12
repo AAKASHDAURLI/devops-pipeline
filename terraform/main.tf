@@ -1,14 +1,14 @@
 terraform {
   required_providers {
     docker = {
-      source = "kreuzwerker/docker"
-      version = "latest"  # Specify version if needed (e.g., "2.15.0")
+      source  = "hashicorp/docker"
+      version = ">= 2.0.0"  # Specify the version you want to use, adjust as needed
     }
   }
 }
 
 provider "docker" {
-  host = "unix:///var/run/docker.sock"
+  host = "unix:///var/run/docker.sock"  # Replace with the appropriate Docker host URL
 }
 
 resource "docker_image" "nginx_image" {
@@ -24,6 +24,6 @@ resource "docker_container" "nginx_container" {
   image = docker_image.nginx_image.name
   ports {
     internal = 80
-    external = 9090
+    external = 9090  # Expose the container on port 9090
   }
 }
