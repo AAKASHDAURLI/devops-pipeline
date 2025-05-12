@@ -19,8 +19,8 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    sh 'docker rm -f html-container || true'
-                    sh 'docker run -d -p 8080:80 --name html-container my-html-app'
+                    bat 'docker rm -f html-container || true'
+                    bat 'docker run -d -p 8080:80 --name html-container my-html-app'
                 }
             }
         }
@@ -28,17 +28,6 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 dir('terraform') {
-                    sh 'terraform init'
+                    bat 'terraform init'
                 }
             }
-        }
-
-        stage('Terraform Apply') {
-            steps {
-                dir('terraform') {
-                    sh 'terraform apply -auto-approve'
-                }
-            }
-        }
-    }
-}
